@@ -1,0 +1,59 @@
+apiVersion: charts.apitanga/v1alpha1
+kind: LaceworkAgent
+metadata:
+  name: laceworkagent-sample
+spec:
+  # Default values copied from <project_dir>/helm-charts/lacework-agent/values.yaml
+  daemonset:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - amd64
+              - arm64
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
+    updateStrategy:
+      type: RollingUpdate
+  image:
+    pullPolicy: Always
+    registry: docker.io
+    repository: lacework/datacollector
+    tag: 5.5.0
+  laceworkConfig:
+    accessToken: null
+    annotations: {}
+    autoUpgrade: enable
+    env: null
+    fim:
+      coolingPeriod: null
+      crawlInterval: null
+      enable: true
+      fileIgnore: []
+      filePath: []
+      noAtime: null
+      runAt: null
+    kubernetesCluster: null
+    labels: {}
+    proxyUrl: null
+    serverUrl: https://api.lacework.net
+    stdoutLogging: true
+  priorityClassName: null
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1450Mi
+    requests:
+      cpu: 200m
+      memory: 512Mi
+  tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+  
+  

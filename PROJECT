@@ -1,0 +1,16 @@
+domain: apitanga
+layout:
+- helm.sdk.operatorframework.io/v1
+plugins:
+  manifests.sdk.operatorframework.io/v2: {}
+  scorecard.sdk.operatorframework.io/v2: {}
+projectName: lacework-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  domain: apitanga
+  group: charts
+  kind: LaceworkAgent
+  version: v1alpha1
+version: "3"

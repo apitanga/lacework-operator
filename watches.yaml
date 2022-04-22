@@ -1,0 +1,6 @@
+# Use the 'create api' subcommand to add watches to this file.
+- group: charts.apitanga
+  version: v1alpha1
+  kind: LaceworkAgent
+  chart: helm-charts/lacework-agent
+#+kubebuilder:scaffold:watch
